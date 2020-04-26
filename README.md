@@ -1,0 +1,2 @@
+# pinentry
+pinentry script
