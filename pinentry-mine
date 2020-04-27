@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
 function main {
-  local cmd_pinentry="$(which pinentry-mac pinentry-curses pinentry-tty pinentry 2>/dev/null | head -1 || true)"
-
-  exec "${cmd_pinentry}" "$@"
+    for p in pinentry-mac pinentry-curses pinentry-tty pinentry
+    do
+	type "$p" 2> /dev/null >&1 && exec "$p" "$@"
+    done
+    exit 1
 }
 
 main "$@"
