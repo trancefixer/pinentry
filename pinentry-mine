@@ -3,7 +3,7 @@
 function main {
     for p in pinentry-mac pinentry-curses pinentry-tty pinentry
     do
-	type "$p" 2> /dev/null >&1 && exec "$p" "$@"
+	type "$p" > /dev/null 2>&1 && exec "$p" "$@"
     done
     exit 1
 }
